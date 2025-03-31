@@ -74,7 +74,8 @@ This competition consisted of 3 tasks.
 
     This problem is considerably harder than the previous one. For the requested stations, we don't have measurement data during the prediction timeframe, so we can't detect anomalies from the data in the same station.
 
-    Using neighboring data like in Task 2 is not straight forward, since the state of each station is more or less independent. I ended up training a set LightGBM Classifiers to predict the status for each instrument. Finally, I did some postprocessing in the predictions in order to ensure that the patterns for the status were similar to the historical ones.
+    Using neighboring data like in Task 2 is not straight forward, since the state of each station is more or less independent. I ended up training a set LightGBM Classifiers to predict the status for each instrument. I only considered the 3 nearest stations for feature generation.
+    Finally, I did some postprocessing in the predictions in order to ensure that the patterns for the status were similar to the historical ones.
 
     I wanted to train a custom LSTM, which would take as input the lagged status of each pollutant in the current station and would forecast the multiclass probabilities for a specific hour, but I didn't have enough time to implement it.
 
