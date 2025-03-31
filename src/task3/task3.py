@@ -68,15 +68,15 @@ TARGETS = [
 ]
 
 
-def geo_dist(lon1, lat1, lon2, lat2):
+def geo_dist(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     """
     Geographical distance between two geographic coordinates. Could use an euclidean distance too.
     """
-    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
+    lon1, lat1, lon2, lat2 = map(np.radians, [lon1, lat1, lon2, lon2])
     dlon = lon2 - lon1
     dlat = lat2 - lat1
-    a = sin(dlat / 2) ** 2 + cos(lat1) * cos(lat2) * sin(dlon / 2) ** 2
-    return 2 * asin(sqrt(a)) * 6371
+    a = np.sin(dlat / 2) ** 2 + np.cos(lat1) * np.cos(lat2) * np.sin(dlon / 2) ** 2
+    return 2 * np.arcsin(np.sqrt(a)) * 6371
 
 
 def find_closest_neighbors(target_station_code, station_coords, n=N_NEIGHBORS):
