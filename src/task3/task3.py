@@ -155,7 +155,7 @@ def prepare_training_data(
     )
 
     # Get measurement data for target and neighbor stations
-    stations_to_get = [station] + neighbors
+    stations_to_get = neighbors
     meas_hist = measurement_df[
         (measurement_df["Station code"].isin(stations_to_get))
         & (measurement_df["Measurement date"] < train_end_date)
